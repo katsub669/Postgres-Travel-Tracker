@@ -16,10 +16,10 @@ Requirements: Postgres/pgAdmin
      country_code CHAR(2),
      country_name VARCHAR(100)
      );
-   6. Import data from the attached 'countries.csv' file to the countries table
-   7. npm i
-   8. in index.js file change the line 13 (password: '', //enter your postgres pw here) and type in your postgres pw
-   9. nodemon index.js
-   10. server is running on port 3000
+6. Import data from the attached 'countries.csv' file to the countries table
+7. npm i
+8. in index.js file change the line 13 (password: '', //enter your postgres pw here) and type in your postgres pw
+9. nodemon index.js
+10. server is running on port 3000
   
    
