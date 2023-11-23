@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<!-- form to choose/add/delete the user-->
   <form class="tab-view tab-view-height-auto" action="/user" method="post">
     <% users.forEach(function(user) { %>
       <input type="submit" name="user" value="<%= user.id %>" id="<%= user.id %>">
