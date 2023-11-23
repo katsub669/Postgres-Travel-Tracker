@@ -5,15 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
+
+  <form class="tab-view tab-view-height-auto" action="/user" method="post">
+    <% users.forEach(function(user) { %>
+      <input type="submit" name="user" value="<%= user.id %>" id="<%= user.id %>">
+      <label class="lbl" for="<%= user.id %>" style="background-color: <%= user.color %>;">
+      <button formaction="/deleteUser" style="background-color: <%= user.color %>" name="deleteUser" type="submit" class="deleteUser" formmethod="post" value="<%= user.id %>" id="<%= user.id * 1000 %>">X</button>
+        <%= user.name %>
+      </label>
+      <% }); %>
+
+        <input type="submit" name="add" value="new" id="tab">
+        <label for="tab">Add Family Member</label>
+
+  </form>
+
   <!-- form to enter the country with text input/error field -->
   <form action="/change" method="post" id="myForm">
     <input type="text" name="country" autofocus placeholder="<%= locals.error ? error :  'Enter country name'%>">
-    <button type="submit" name="submitButton" value="submit">Add</button>
-    <button type="submit" name="submitButton" value="delete">Delete</button>
+    <button type="submit" name="submitButton" value="submit" style="background-color: <%= color %>;">Add</button>
+    <button type="submit" name="submitButton" value="delete" style="background-color: <%= color %>;">Delete</button>
 
   </form>
 
@@ -375,14 +391,14 @@
         d="M562.709,526.998L561.219,526.697L560.274,527.059L558.917,526.548L557.776,526.516L555.989,525.158L553.821,524.698L552.996,522.803L552.989,521.752L551.788,521.432L548.615,518.177L547.733,516.471L547.169,515.946L546.09,513.602L549.224,513.922L550.135,514.26L551.082,514.192L552.634,512.299L555.073,509.904L556.076,509.676L556.417,508.67L558.014,507.516L560.138,507.12L560.319,508.2L562.658,508.142L563.957,508.754L564.562,509.472L565.896,509.683L567.353,510.617L567.359,514.312L566.813,516.347L566.692,518.55L567.143,519.426L566.826,521.172L566.402,521.443L565.663,523.593z" />
     </svg>
   </section>
-  <a href="/delete">Delete All</a>
+  <a href="/delete" class="deleteAll">Delete All</a>
   <h2 class="total-count">Total Countries: <%=total%>
   </h2>
 
   <script>
     const country_codes = "<%= countries %>".split(",") 
     country_codes.forEach(code => {
-      document.getElementById(code).style.fill = 'teal'
+      document.getElementById(code).style.fill = "<%= color %>"
     });
   </script>
 </body>
